@@ -1,0 +1,144 @@
+name: mypay
+description: A new Flutter project.
+
+publish_to: "none"
+
+# app version
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  ################################ UI PACKAGES #################################
+
+  # Icons for IOS
+  cupertino_icons: ^1.0.2
+
+  # Interactive user feedback tool for Flutter apps.
+  # https://docs.wiredash.io
+  wiredash: ^0.7.0+1
+
+  # Flutter Widgets that make it easy to implement the BLoC (Business Logic Component)
+  # design pattern.
+  flutter_bloc: ^7.2.0
+
+  # A Flutter package to Showcase/Highlight widgets step by step.
+  # https://resocoder.com/2021/08/03/flutter-showcaseview-tutorial-introduce-app-features-to-your-users
+  showcaseview: ^1.1.0
+
+  # Official animations package providing Material Design transitions
+  animations: ^2.0.1
+  simple_animations: ^3.1.1
+  flutter_staggered_animations: "^1.0.0"
+
+  ########################## DATA PERSISTENCE PACKAGES #########################
+
+  # Flutter plugin for reading and writing simple key-value pairs.
+  shared_preferences: ">=2.0.6"
+
+  # Flutter Secure Storage provides API to store data in secure storage.
+  flutter_secure_storage: ^4.2.1
+
+  # Supplies the app with the directory location for storing files
+  path_provider: ^2.0.2
+
+  # Lightweight and blazing fast key-value database written in pure Dart.
+  hive: ^2.0.4
+  hive_flutter: ^1.1.0
+
+  ############################### OTHER PACKAGES ###############################
+
+  # A Flutter plugin to retrieve and manage contacts on Android and iOS devices.
+  contacts_service: ^0.6.1
+
+  # The Dart analyzer settings and best practices used internally at Google
+  pedantic: ^1.11.1
+
+  # An SVG rendering and widget library for Flutter.dio:
+  flutter_svg: ^0.22.0
+
+  # A Flutter plugin for read SIM information.
+  sim_info: ^0.1.3
+
+  # Flutter plugin for launching a URL.
+  url_launcher: ^6.0.9
+
+  # This package simplify the internationalizing process
+  easy_localization: ^3.0.0
+
+  # Flutter plugin for querying information about the application package.
+  package_info: ^2.0.2
+
+  # Run ussd code directly in your application.
+  # https://pub.dev/packages/ussd
+  ussd: ^0.0.2+1
+
+  # A Flutter plugin to make silent USSD requests and read their responses.
+  # https://pub.dev/packages/ussd_service
+  # ussd_service: ^0.1.0+4
+
+  # Shares in app content using respective system sharing APIs
+  share: ^2.0.4
+
+  # Officially endorsed state management library with O(1) access time from
+  # anywhere in the widget tree.dio:
+  provider: ^6.0.0
+
+  #
+  permission_handler: ^8.1.4+2
+
+  # Makes comparing dart objects by equality is much easier.
+  equatable: ^2.0.3
+
+  #
+  rxdart: ^0.27.1
+
+  #
+  get_it: ^7.2.0
+  flutter_masked_text: ^0.8.0
+
+  # https://pub.dev/packages/circular_check_box
+  # circular_check_box: ^1.0.4
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  #
+  hive_generator: ^1.1.0
+
+  #
+  build_runner: ^2.1.1
+
+# The following section is specific to Flutter.
+flutter:
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    # HTML files
+    - assets/html/
+
+    # Language translation files
+    - assets/i18n/fr.json
+    - assets/i18n/en.json
+
+    # Icons
+    - assets/icons/
+
+    # Images
+    - assets/images/
+
+  fonts:
+    - family: Josefin Sans
+      fonts:
+        - asset: assets/fonts/JosefinSans-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/JosefinSans-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/JosefinSans-SemiBold.ttf
+          weight: 600
