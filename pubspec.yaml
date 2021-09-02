@@ -32,7 +32,11 @@ dependencies:
 
   # Official animations package providing Material Design transitions
   animations: ^2.0.1
+
+  # Powerful package to create beautiful custom animations in no time
   simple_animations: ^3.1.1
+
+  #
   flutter_staggered_animations: "^1.0.0"
 
   ########################## DATA PERSISTENCE PACKAGES #########################

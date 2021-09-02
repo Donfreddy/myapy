@@ -5,6 +5,7 @@ import 'package:mypay/pages/transactions/components/money_field.dart';
 import 'package:mypay/pages/transactions/components/operator_logo.dart';
 import 'package:mypay/pages/transactions/components/phone_field.dart';
 import 'package:mypay/pages/transactions/components/send_button.dart';
+import 'package:mypay/utils/helpers/custom_switch.dart';
 import 'package:mypay/utils/helpers/utils.dart';
 import 'package:mypay/utils/models/transaction.dart';
 import 'package:mypay/utils/ui/app_color.dart';
@@ -26,7 +27,7 @@ class _MoneytransferState extends State<Moneytransfer> {
   String logoPath = '';
   String amount = '0';
   String operatorName = '';
-  String fees = '250';
+  String fees = '50';
   bool hasCharges = false;
   bool isSameOperator = true;
 
@@ -82,7 +83,7 @@ class _MoneytransferState extends State<Moneytransfer> {
             children: [
               OperatorLogo(logoPath: logoPath),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10) +
+                padding: const EdgeInsets.symmetric(vertical: 20) +
                     EdgeInsets.only(bottom: 10),
                 child: Row(
                   children: [
@@ -164,7 +165,7 @@ class _MoneytransferState extends State<Moneytransfer> {
                           ),
                           SizedBox(height: 4),
                           Text(
-                            '$fees XAF',
+                            '$fees FCFA',
                             style: TextStyle(color: AppColor.gray2),
                             maxLines: 3,
                           ),
@@ -175,47 +176,53 @@ class _MoneytransferState extends State<Moneytransfer> {
                 ),
               ),
               // SizedBox(height: 20),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10),
-                child: Row(
-                  children: [
-                    Icon(Icons.add),
-                    Text(
-                      'Ajouter une référence',
-                      style: TextStyle(fontSize: 12, color: AppColor.gray2),
-                    ),
-                  ],
+              // Padding(
+              //   padding: const EdgeInsets.symmetric(vertical: 10),
+              //   child: Row(
+              //     children: [
+              //       Icon(Icons.add),
+              //       Text(
+              //         'Ajouter une référence',
+              //         style: TextStyle(fontSize: 12, color: AppColor.gray2),
+              //       ),
+              //     ],
+              //   ),
+              // ),
+              // // Container(child: TextField()),
+
+              AnimatedOpacity(
+                opacity: hasCharges ? 1 : 0,
+                duration: Duration(milliseconds: 300),
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: Text(
+                    'Montant Total: 5150 FCFA',
+                    style: TextStyle(color: AppColor.gray2),
+                  ),
                 ),
               ),
-              // Container(child: TextField()),
               SizedBox(height: 10),
               Container(
                 child: Row(
                   children: [
-                    // Switch(
-                    //   value: hasCharges,
-                    //   activeColor: widget.transaction.iconColor,
-                    //   onChanged: (val) {
-                    //     setState(() {
-                    //       hasCharges = val;
-                    //     });
-                    //   },
-                    // ),
-                    SizedBox(
-                      width: 50,
-                      height: 10,
-                      child: CupertinoSwitch(
-                        value: hasCharges,
-                        activeColor: widget.transaction.color,
-                        onChanged: (val) {
-                          setState(() {
-                            hasCharges = val;
-                          });
-                        },
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          hasCharges = !hasCharges;
+                        });
+                      },
+                      child: CustomSwitch(
+                        backgroundColor: hasCharges
+                            ? widget.transaction.iconColor!
+                            : Colors.grey,
+                        unCheckedColor: Colors.white,
+                        animationDuration: Duration(milliseconds: 300),
+                        checkedColor: Colors.white,
+                        checked: hasCharges,
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 10),
+                      padding: const EdgeInsets.only(left: 6),
                       child: Text(
                         'Inclure les frais de retrait',
                         style: TextStyle(fontSize: 12, color: AppColor.gray2),
@@ -224,11 +231,12 @@ class _MoneytransferState extends State<Moneytransfer> {
                   ],
                 ),
               ),
-              SizedBox(height: 30),
+              SizedBox(height: 40),
               SendButton(
                 color: widget.transaction.iconColor!,
                 onPressed: () {},
-              )
+              ),
+              SizedBox(height: 30),
             ],
           ),
         ),

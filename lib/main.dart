@@ -49,6 +49,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        // fontFamily: 'Josefin Sans',
       ),
       initialRoute: RouteList.initial,
       onGenerateRoute: generateRoute,
