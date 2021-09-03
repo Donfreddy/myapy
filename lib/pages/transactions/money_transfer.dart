@@ -1,4 +1,5 @@
 import 'package:contacts_service/contacts_service.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mypay/pages/transactions/components/money_field.dart';
@@ -6,6 +7,7 @@ import 'package:mypay/pages/transactions/components/operator_logo.dart';
 import 'package:mypay/pages/transactions/components/phone_field.dart';
 import 'package:mypay/pages/transactions/components/send_button.dart';
 import 'package:mypay/utils/helpers/custom_switch.dart';
+import 'package:mypay/utils/helpers/fees.dart';
 import 'package:mypay/utils/helpers/utils.dart';
 import 'package:mypay/utils/models/transaction.dart';
 import 'package:mypay/utils/ui/app_color.dart';
@@ -26,10 +28,13 @@ class _MoneytransferState extends State<Moneytransfer> {
   String phone = '671842701';
   String logoPath = '';
   String amount = '0';
+  String totalAmount = '0';
   String operatorName = '';
-  String fees = '50';
+  String fee = '0';
   bool hasCharges = false;
   bool isSameOperator = true;
+
+  final formatter = NumberFormat.simpleCurrency(locale: 'fr', name: 'XAF');
 
   // Ctrllers
   final phoneCtrller = TextEditingController();
@@ -45,6 +50,13 @@ class _MoneytransferState extends State<Moneytransfer> {
     setState(() {
       amount = newValue;
     });
+
+    if (isSameOperator) {
+      fee = amount + Fees.transfer(amount);
+      totalAmount = amount + Fees.om(amount);
+    } else {
+      fee = amount + Fees.nonOM(amount);
+    }
   }
 
   initData() async {
@@ -165,7 +177,7 @@ class _MoneytransferState extends State<Moneytransfer> {
                           ),
                           SizedBox(height: 4),
                           Text(
-                            '$fees FCFA',
+                            '${formatter.format(fee)}',
                             style: TextStyle(color: AppColor.gray2),
                             maxLines: 3,
                           ),
@@ -196,7 +208,9 @@ class _MoneytransferState extends State<Moneytransfer> {
                 child: Padding(
                   padding: const EdgeInsets.only(top: 10),
                   child: Text(
-                    'Montant Total: 5150 FCFA',
+                    isSameOperator
+                        ? 'Montant Total: ${formatter.format(totalAmount)}'
+                        : 'Le retrait pour un client non $operatorName  est gratuit',
                     style: TextStyle(color: AppColor.gray2),
                   ),
                 ),

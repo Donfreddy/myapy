@@ -4,6 +4,7 @@ import 'package:mypay/blocs/operator_bloc.dart';
 import 'package:mypay/common/constants/route_constants.dart';
 import 'package:mypay/pages/drawer/main_drawer.dart';
 import 'package:mypay/pages/home/components/tansaction_card.dart';
+import 'package:mypay/utils/models/oprator.dart';
 import 'package:mypay/utils/models/transaction.dart';
 import 'package:mypay/widgets/app_bar.dart';
 
@@ -18,6 +19,8 @@ class _HomeState extends State<Home> {
   //
   final OperatorBloc _operatorBloc = OperatorBloc();
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  late Operator currentOperator;
 
   void openEndDrawer() {
     _scaffoldKey.currentState!.openEndDrawer();
@@ -36,7 +39,16 @@ class _HomeState extends State<Home> {
       box.put('showShowcase', true);
       return true;
     }
+
     return false;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    currentOperator = Operator.fromJson(_operatorBloc.defaultOp);
+    print(currentOperator.id);
   }
 
   @override

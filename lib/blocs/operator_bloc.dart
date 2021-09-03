@@ -11,6 +11,7 @@ class OperatorBloc {
     'logoPath': 'assets/images/Orange-Money.png'
   };
 
+
   BehaviorSubject<Operator> _changeOperator = BehaviorSubject<Operator>();
   Stream<Operator> get changeOperator => _changeOperator.stream;
 

@@ -45,7 +45,7 @@ dependencies:
   shared_preferences: ">=2.0.6"
 
   # Flutter Secure Storage provides API to store data in secure storage.
-  flutter_secure_storage: ^4.2.1
+  # flutter_secure_storage: ^4.2.1
 
   # Supplies the app with the directory location for storing files
   path_provider: ^2.0.2
