@@ -7,7 +7,7 @@ import 'package:mypay/pages/transactions/components/operator_logo.dart';
 import 'package:mypay/pages/transactions/components/phone_field.dart';
 import 'package:mypay/pages/transactions/components/send_button.dart';
 import 'package:mypay/utils/helpers/custom_switch.dart';
-import 'package:mypay/utils/helpers/fees.dart';
+import 'package:mypay/utils/helpers/orange_fees.dart';
 import 'package:mypay/utils/helpers/utils.dart';
 import 'package:mypay/utils/models/transaction.dart';
 import 'package:mypay/utils/ui/app_color.dart';
@@ -52,10 +52,10 @@ class _MoneytransferState extends State<Moneytransfer> {
     });
 
     if (isSameOperator) {
-      fee = amount + Fees.transfer(amount);
-      totalAmount = amount + Fees.om(amount);
+      fee = OrangeFees.transfer(amount);
+      totalAmount = amount + OrangeFees.om(amount);
     } else {
-      fee = amount + Fees.nonOM(amount);
+      fee = amount + OrangeFees.nonOM(amount);
     }
   }
 
@@ -72,6 +72,9 @@ class _MoneytransferState extends State<Moneytransfer> {
   @override
   void initState() {
     initData();
+
+    phoneCtrller.addListener(() {});
+    amountCtrller.addListener(() {});
 
     phoneCtrller.text = phone;
     // amountCtrller.text = amount;
@@ -177,7 +180,7 @@ class _MoneytransferState extends State<Moneytransfer> {
                           ),
                           SizedBox(height: 4),
                           Text(
-                            '${formatter.format(fee)}',
+                            '$fee',
                             style: TextStyle(color: AppColor.gray2),
                             maxLines: 3,
                           ),
@@ -209,7 +212,7 @@ class _MoneytransferState extends State<Moneytransfer> {
                   padding: const EdgeInsets.only(top: 10),
                   child: Text(
                     isSameOperator
-                        ? 'Montant Total: ${formatter.format(totalAmount)}'
+                        ? 'Montant Total: $totalAmount'
                         : 'Le retrait pour un client non $operatorName  est gratuit',
                     style: TextStyle(color: AppColor.gray2),
                   ),

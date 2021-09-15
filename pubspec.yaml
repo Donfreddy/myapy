@@ -30,6 +30,9 @@ dependencies:
   # https://resocoder.com/2021/08/03/flutter-showcaseview-tutorial-introduce-app-features-to-your-users
   showcaseview: ^1.1.0
 
+  # Introduction/Onboarding package for flutter app
+  # introduction_screen: ^2.1.0
+
   # Official animations package providing Material Design transitions
   animations: ^2.0.1
 

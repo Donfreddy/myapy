@@ -33,6 +33,11 @@ void main() async {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]),
   );
 
+  //
+  SystemChrome.setSystemUIOverlayStyle(
+    SystemUiOverlayStyle(statusBarIconBrightness: Brightness.light),
+  );
+
   // Init service locator
   unawaited(setupLocator());
 

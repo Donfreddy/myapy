@@ -1,4 +1,4 @@
-class Fees {
+class OrangeFees {
   /// Transfer to Orange Mobile
   static String transfer(String amountStr) {
     // String -> int
