@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:mypay/common/constants/app_constants.dart';
 import 'package:mypay/common/constants/route_constants.dart';
-import 'package:mypay/common/screenutil/screenutil.dart';
+import 'package:mypay/common/screenUtil/screenUtil.dart';
 import 'package:mypay/config/routes/routes.dart';
 import 'package:mypay/service_locator.dart';
 import 'package:path_provider/path_provider.dart' as pathProvider;

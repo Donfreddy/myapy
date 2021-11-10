@@ -1,5 +1,4 @@
-import '../screenutil/screenutil.dart';
-
+import 'package:mypay/common/screenUtil/screenUtil.dart';
 extension SizeExtension on double {
   double get w => ScreenUtil().setWidth(this);
 
